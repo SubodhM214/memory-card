@@ -45,7 +45,7 @@ const App = () => {
       <div className="header">
         <img
           src="./src/assets/images/transparentTitle.png"
-          alt=""
+          alt="game-title"
           className="game-title"
         />
         <BackgroundMusic />
