@@ -2,15 +2,52 @@ body {
   font-family: Arial, sans-serif;
   margin: 0;
   padding: 0;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  min-height: 100vh;
-  background-color: #f0f0f0;
+  background: url("/src/assets/characters/backgroud.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
 }
 
 .app-container {
+  display: grid;
+  grid-template-columns: 1fr 3fr 1fr;
+
+  justify-content: center;
+}
+/* header section */
+
+.header {
+  background: none;
+  text-align: center;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.game-title {
+  width: 300px;
+  height: auto;
+  display: block;
+}
+
+.score-box {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: fit-content;
+  height: max-content;
+  padding: 4px;
+  background-color: #fff;
+  border: 2px solid #333;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  font-size: 20px;
+  font-weight: bold;
+  color: #333;
+
+  margin: 40px auto;
   text-align: center;
 }
 
@@ -18,9 +55,7 @@ body {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 20px;
-  justify-content: center;
   padding: 20px;
-  perspective: 1200px;
 }
 
 .image-item {
@@ -36,25 +71,94 @@ body {
   transform: rotateY(0eg) rotateX(0deg);
   /* 3d hover */
   transition: transform 0.3s ease, box-shadow 0.3s ease;
-  transform-style: preserve-3d; /* Keep 3D transformations intact */
+  transform-style: preserve-3d;
   backface-visibility: hidden;
 }
 .image-item:hover {
-  transform: rotateY(15deg) rotateX(10deg); /* Rotate image on hover */
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3); /* Stronger shadow */
+  transform: rotateY(15deg) rotateX(10deg);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+}
+.image-item.flipped {
+  transform: rotateY(180deg);
+  transform-style: preserve-3d;
+}
+
+/* game over modal */
+
+/* Modal Backdrop */
+.modal-backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.6);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+}
+
+/* Modal Box */
+.modal {
+  background: #fff;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+  text-align: center;
+  width: 300px;
+}
+
+.modal h2 {
+  font-size: 24px;
+  margin-bottom: 10px;
+}
+
+.modal p {
+  font-size: 18px;
+  margin-bottom: 20px;
+}
+
+.modal button {
+  background: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.modal button:hover {
+  background: #0056b3;
+}
+
+/* mussic toggle */
+.music-toggle {
+  background-color: #fafafa;
+  color: #4caf50;
+  border: 2px solid #4caf50;
+  padding: 10px;
+  font-size: 24px;
+  cursor: pointer;
+  border-radius: 5px;
+  margin-top: 10px;
+}
+
+.music-toggle:hover {
+  background-color: #4caf50;
+  color: white;
 }
 
 @media (max-width: 768px) {
   .image-list {
-    grid-template-columns: repeat(
-      2,
-      1fr
-    ); /* 2 items per row for smaller screens */
+    grid-template-columns: repeat(2, 1fr);
   }
 }
 
 @media (max-width: 480px) {
   .image-list {
-    grid-template-columns: 1fr; /* 1 item per row for very small screens */
+    grid-template-columns: 1fr;
   }
 }

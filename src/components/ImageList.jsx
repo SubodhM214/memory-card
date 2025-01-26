@@ -1,6 +1,6 @@
 import React from "react";
 import "../style.css";
-const ImageList = ({ characters, handleImageClick }) => {
+const ImageList = ({ characters, handleImageClick, flipped }) => {
   return (
     <div>
       <div className="image-list">
@@ -8,7 +8,7 @@ const ImageList = ({ characters, handleImageClick }) => {
           <img
             key={character.id}
             src={character.img}
-            className="image-item"
+            className={`image-item ${flipped ? "flipped" : ""}`}
             alt={character.name}
             onClick={() => {
               handleImageClick(character.id);
